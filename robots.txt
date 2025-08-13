@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://test1349.ru/sitemap.xml
