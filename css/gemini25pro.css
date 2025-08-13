@@ -1,0 +1,472 @@
+/* ==========================================================================
+   1. Base & Variables
+   ========================================================================== */
+
+/* Using Inter as a modern, readable font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+:root {
+    --color-primary: #0052cc;
+    --color-primary-hover: #0041a3;
+    --color-secondary: #ffc400; /* Accent for CTA */
+    --color-dark: #172b4d;
+    --color-text: #42526e;
+    --color-light: #ffffff;
+    --color-bg: #f4f5f7;
+    --color-border: #dfe1e6;
+    --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --border-radius: 8px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition-speed: 0.3s;
+}
+
+/* Basic Reset & Box Sizing */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-base);
+    color: var(--color-text);
+    background-color: var(--color-light);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--color-dark);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   2. Buttons & Shared Components
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+}
+
+.btn--primary {
+    background-color: var(--color-primary);
+    color: var(--color-light);
+}
+
+.btn--primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-2px);
+}
+
+.btn--large {
+    padding: 16px 32px;
+    font-size: 1.1rem;
+}
+
+.btn--small {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   3. Header
+   ========================================================================== */
+.header {
+    padding: 20px 0;
+    background-color: var(--color-light);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo img {
+    display: block;
+}
+
+.header__nav {
+    display: none; /* Hidden on mobile */
+}
+
+.header__link {
+    color: var(--color-text);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 700;
+}
+.header__link:hover {
+    color: var(--color-primary);
+}
+
+
+/* ==========================================================================
+   4. Hero Section
+   ========================================================================== */
+.hero {
+    padding: 60px 0;
+    background-color: var(--color-bg);
+}
+
+.hero__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.hero__title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--color-dark);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.hero__subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.hero__image-wrapper {
+    margin-top: 40px;
+}
+
+.hero__image {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+
+/* ==========================================================================
+   5. Benefits Section
+   ========================================================================== */
+.benefits {
+    padding: 60px 0;
+}
+
+.benefits__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.benefit-card {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    background-color: var(--color-light);
+}
+
+.benefit-card__icon {
+    margin-bottom: 20px;
+    width: 80px;
+    height: 80px;
+}
+
+.benefit-card__title {
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   6. Reviews Section
+   ========================================================================== */
+.reviews {
+    padding: 60px 0;
+    background-color: var(--color-bg);
+}
+
+.reviews__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.review-card {
+    background-color: var(--color-light);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.review-card__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.review-card__avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    -o-object-fit: cover;
+       object-fit: cover;
+}
+
+.review-card__author {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--color-dark);
+    display: block;
+}
+
+.review-card__company {
+    font-size: 0.9rem;
+    color: var(--color-text);
+}
+
+.review-card__text p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--color-dark);
+}
+
+/* ==========================================================================
+   7. FAQ Section
+   ========================================================================== */
+.faq {
+    padding: 60px 0;
+}
+
+.faq__container {
+    max-width: 800px;
+}
+
+.faq__item {
+    border-bottom: 1px solid var(--color-border);
+}
+.faq__item:last-child {
+    border-bottom: none;
+}
+
+.faq__question {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    padding: 20px 0;
+    cursor: pointer;
+    list-style: none; /* Remove default marker */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.faq__question::-webkit-details-marker {
+    display: none; /* Chrome */
+}
+
+.faq__question::after {
+    content: '+';
+    font-size: 2rem;
+    color: var(--color-primary);
+    transition: transform var(--transition-speed) ease;
+}
+
+.faq__item[open] .faq__question::after {
+    transform: rotate(45deg);
+}
+
+.faq__answer {
+    padding-bottom: 20px;
+    line-height: 1.7;
+}
+.faq__answer ul {
+    padding-left: 20px;
+}
+
+/* ==========================================================================
+   8. CTA Section
+   ========================================================================== */
+.cta {
+    padding: 60px 0;
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
+
+.cta__container {
+    text-align: center;
+}
+
+.cta__limit {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--color-secondary);
+}
+
+.cta__title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 10px;
+}
+
+.cta__gift {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.cta__button {
+    animation: pulse 2s infinite;
+}
+
+/* ==========================================================================
+   9. Footer
+   ========================================================================== */
+.footer {
+    padding: 40px 0;
+    background-color: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+}
+
+.footer__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+}
+
+.footer__email {
+    color: var(--color-text);
+    text-decoration: none;
+}
+.footer__email:hover {
+    color: var(--color-primary);
+}
+
+.footer__copyright {
+    font-size: 0.9rem;
+}
+
+
+/* ==========================================================================
+   10. Animations
+   ========================================================================== */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 82, 204, 0.7);
+    }
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(0, 82, 204, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(0, 82, 204, 0);
+    }
+}
+
+
+/* ==========================================================================
+   11. Media Queries (Desktop-First)
+   ========================================================================== */
+
+/* Tablet and larger */
+@media (min-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+
+    .section-title {
+        font-size: 3rem;
+        margin-bottom: 60px;
+    }
+
+    .header__nav {
+        display: block; /* Show nav on tablets and up */
+    }
+
+    .header__container .btn {
+        display: none; /* Hide button in header if nav is visible */
+    }
+
+    .hero__container {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+        gap: 40px;
+    }
+    
+    .hero__content {
+        flex: 1;
+    }
+
+    .hero__image-wrapper {
+        flex: 1;
+        margin-top: 0;
+    }
+
+    .benefits__grid,
+    .reviews__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .cta__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+    }
+
+    .cta__offer {
+        margin-bottom: 0;
+    }
+
+    .footer__container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+/* Large desktop */
+@media (min-width: 1024px) {
+    .hero__title {
+        font-size: 3.5rem;
+    }
+    
+    .header__container .btn {
+        display: inline-block; /* Show button again on large screens */
+    }
+}

@@ -1,0 +1,550 @@
+/* ======================= Базовые стили и переменные ======================= */
+/* Используем БЭМ-нейминг и mobile-first подход */
+
+:root {
+    /* Цветовая палитра */
+    --primary-color: #0056b3; /* Синий для акцентов */
+    --primary-hover-color: #003d82;
+    --secondary-color: #f4f4f9; /* Светлый фон для секций */
+    --text-color: #333; /* Основной цвет текста */
+    --heading-color: #111; /* Цвет заголовков */
+    --light-text-color: #666;
+    --border-color: #ddd;
+    --bg-color: #ffffff;
+
+    /* Типографика */
+    --font-family-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-family-heading: 'Georgia', serif;
+
+    /* Прочее */
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --container-padding: 15px;
+    --container-width: 1140px;
+}
+
+/* Общие сбросы и настройки */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-base);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Контейнер */
+.container {
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+}
+
+/* Ссылки */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--primary-hover-color);
+    text-decoration: underline;
+}
+
+/* Заголовки и секции */
+.section {
+    padding: 60px 0;
+    -webkit-animation: fadeIn 1s ease-in-out;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.section:nth-child(odd) {
+    background-color: var(--secondary-color);
+}
+
+.section__title {
+    font-family: var(--font-family-heading);
+    font-size: 2.5rem;
+    color: var(--heading-color);
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.section__title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 10px auto 0;
+}
+
+
+/* ======================= Header ======================= */
+.header {
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--heading-color);
+}
+.header__logo:hover {
+    text-decoration: none;
+}
+
+.nav__list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav__link {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.nav__link--button {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed) ease;
+}
+
+.nav__link--button:hover {
+    background-color: var(--primary-hover-color);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Бургер-меню */
+.burger {
+    display: none; /* Скрыт по умолчанию */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1010;
+    width: 30px;
+    height: 22px;
+    position: relative;
+}
+
+.burger__line {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: var(--heading-color);
+    border-radius: 3px;
+    transition: all var(--transition-speed) ease-in-out;
+}
+.burger__line:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+/* ======================= Hero-блок ======================= */
+.hero {
+    padding: 80px 0;
+    background-color: var(--secondary-color);
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero__container {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+}
+
+.hero__subtitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.hero__title {
+    font-family: var(--font-family-heading);
+    font-size: 3.5rem;
+    margin: 10px 0;
+    color: var(--heading-color);
+}
+
+.hero__description {
+    font-size: 1.1rem;
+    color: var(--light-text-color);
+    max-width: 600px;
+    margin: 0 auto 20px;
+}
+
+.hero__contacts {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+}
+
+.hero__contacts li {
+    margin-bottom: 5px;
+}
+
+.hero__image-wrapper {
+    flex-shrink: 0;
+}
+
+.hero__img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 5px solid var(--bg-color);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    -webkit-user-drag: none;
+}
+
+/* ======================= Опыт работы (Timeline) ======================= */
+.experience__timeline {
+    position: relative;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.experience__timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: var(--border-color);
+}
+
+.job {
+    margin-bottom: 40px;
+    padding-left: 40px;
+    position: relative;
+}
+.job::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 8px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: 3px solid var(--secondary-color);
+}
+
+.job__title {
+    font-size: 1.4rem;
+    color: var(--heading-color);
+    font-weight: 600;
+}
+
+.job__period {
+    color: var(--light-text-color);
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.job__duties {
+    padding-left: 20px;
+}
+
+.job__duties li {
+    margin-bottom: 5px;
+}
+
+/* ======================= Образование, Курсы, Доп. инфо ======================= */
+.education__list, .about__grid, .courses__grid {
+    display: grid;
+    gap: 30px;
+}
+
+.education__item, .course-card, .about__item {
+    background-color: var(--bg-color);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+.education__item:hover, .course-card:hover, .about__item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.education__degree { font-size: 1.2rem; color: var(--heading-color); }
+.course-card__title { font-size: 1.2rem; color: var(--heading-color); }
+.about__subtitle { font-size: 1.3rem; color: var(--heading-color); margin-bottom: 15px; }
+
+.skills__list, .qualities__list {
+    list-style: none;
+    padding-left: 0;
+}
+.skills__list li, .qualities__list li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 8px;
+}
+.skills__list li::before, .qualities__list li::before {
+    content: '✓';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+
+/* ======================= Компании (Clients) ======================= */
+.clients__grid {
+    display: grid;
+    /* На мобильных устройствах будет 2 колонки */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    align-items: center;
+}
+
+.clients__logo {
+    background-color: var(--bg-color);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90px;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.clients__logo:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.clients__logo img {
+    max-width: 100%;
+    height: 40px; /* Фиксированная высота для единообразия */
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: filter var(--transition-speed) ease, opacity var(--transition-speed) ease;
+}
+
+.clients__logo:hover img {
+    -webkit-filter: grayscale(0%);
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+/* ======================= Контакты (Contact) ======================= */
+.contact__grid {
+    display: grid;
+    /* На мобильных 1 колонка */
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+.contact-card {
+    background-color: var(--bg-color);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    text-align: center;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-card__icon {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.contact-card__title {
+    font-size: 1.3rem;
+    color: var(--heading-color);
+    margin-bottom: 5px;
+}
+
+.contact-card__info {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.contact-card__info a {
+    text-decoration: none;
+}
+
+.contact-card__info a:hover {
+    text-decoration: underline;
+}
+
+
+/* ======================= Footer ======================= */
+.footer {
+    background-color: var(--heading-color);
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+
+/* ======================= Анимации ======================= */
+@-webkit-keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ======================= Адаптивность (Mobile-First) ======================= */
+
+/* Планшеты (768px и больше) */
+@media (min-width: 768px) {
+    :root {
+        --container-padding: 30px;
+    }
+
+    .hero__container {
+        flex-direction: row;
+        text-align: left;
+        gap: 60px;
+    }
+
+    .hero__description {
+        margin: 0 0 20px;
+    }
+    
+    .hero__img {
+        width: 300px;
+        height: 300px;
+    }
+
+.clients__grid {
+        /* На планшетах и десктопах - 4 колонки */
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .contact__grid {
+        /* На планшетах и десктопах - 3 колонки */
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Навигация */
+    .nav {
+        display: block !important; /* Убираем важность если не нужно переопределять JS */
+    }
+
+    .burger {
+        display: none;
+    }
+
+    /* Сетки */
+    .courses__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Десктопы (1024px и больше) */
+@media (min-width: 1024px) {
+    .courses__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Стили для мобильного меню */
+@media (max-width: 767px) {
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--bg-color);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        padding: 20px;
+    }
+    .nav--active {
+        display: block;
+    }
+    .nav__list {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    .nav__item {
+        width: 100%;
+    }
+    .nav__link {
+        display: block;
+        padding: 10px;
+        text-align: center;
+        border-radius: var(--border-radius);
+    }
+    .nav__link:hover {
+        background-color: var(--secondary-color);
+        text-decoration: none;
+    }
+    .nav__link--button {
+        width: 100%;
+    }
+
+    .burger {
+        display: block;
+    }
+    .burger--active .burger__line:nth-child(1) {
+        -webkit-transform: rotate(45deg) translate(7px, 7px);
+        transform: rotate(45deg) translate(7px, 7px);
+    }
+    .burger--active .burger__line:nth-child(2) {
+        opacity: 0;
+    }
+    .burger--active .burger__line:nth-child(3) {
+        -webkit-transform: rotate(-45deg) translate(7px, -7px);
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+}

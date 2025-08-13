@@ -1,0 +1,260 @@
+/* styles.css */
+/* CSS-переменные */
+:root {
+  --color-primary: #ff5722;
+  --color-secondary: #333;
+  --color-bg: #fafafa;
+  --color-white: #fff;
+  --font-base: 'Helvetica Neue', Arial, sans-serif;
+  --transition-speed: 0.3s;
+}
+
+/* Mobile-first reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: var(--font-base);
+  color: var(--color-secondary);
+  background: var(--color-bg);
+  line-height: 1.6;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Utility */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+}
+
+/* BUTTONS */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: transform var(--transition-speed), background var(--transition-speed);
+}
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-white);
+}
+.btn--primary:hover {
+  background: darken(var(--color-primary), 10%);
+  transform: scale(1.05);
+}
+.btn--cta {
+  background: var(--color-primary);
+  color: var(--color-white);
+  animation: pulse 2s infinite;
+}
+.btn--cta:hover {
+  transform: scale(1.1);
+}
+
+/* HEADER */
+.header {
+  background: var(--color-white);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.header__menu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+.header__menu-item a {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+.header__menu-item a:hover {
+  color: var(--color-primary);
+}
+
+/* SECTION TITLES */
+.section {
+  padding: 3rem 0;
+}
+.section-title {
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* HERO */
+.hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.hero__title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.hero__text {
+  margin-bottom: 1.5rem;
+}
+.hero__media img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* FEATURES */
+.features__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.feature {
+  text-align: center;
+}
+.feature__icon {
+  margin-bottom: 1rem;
+}
+.feature__title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.feature__desc {
+  color: #555;
+}
+
+/* REVIEWS */
+.reviews__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.review {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--color-white);
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+.review__avatar {
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.review__body {
+  flex: 1;
+}
+.review__author {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: #777;
+}
+
+/* FAQ */
+.faq__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.faq__item {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: var(--color-white);
+  overflow: hidden;
+}
+.faq__question {
+  padding: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
+.faq__answer {
+  padding: 0 1rem 1rem;
+  color: #555;
+}
+
+/* CTA */
+.cta__inner {
+  text-align: center;
+  background: var(--color-white);
+  padding: 2rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.cta__title {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.cta__text {
+  margin-bottom: 1.5rem;
+}
+
+/* FOOTER */
+.footer {
+  background: var(--color-secondary);
+  color: var(--color-white);
+  padding: 2rem 0;
+}
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.footer__email {
+  color: var(--color-white);
+  text-decoration: none;
+}
+.footer__email:hover {
+  text-decoration: underline;
+}
+.footer__copy {
+  font-size: 0.875rem;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255,87,34,0.7); }
+  50%      { box-shadow: 0 0 0 10px rgba(255,87,34,0); }
+}
+
+/* Media Queries */
+@media (min-width: 768px) {
+  .hero__inner { flex-direction: row; text-align: left; }
+  .features__list, .reviews__list {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .features__list .feature,
+  .reviews__list .review {
+    flex: 1;
+    margin: 0 0.5rem;
+  }
+  .faq__list {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
